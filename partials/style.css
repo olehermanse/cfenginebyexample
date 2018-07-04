@@ -44,6 +44,10 @@ pre {
 }
 code {
     font-style: monospace;
+    background-color: #F4F4F4;
+    margin: 0;
+    padding: 2px !important;
+    color: brown;
 }
 header, footer {
     display: flex;
@@ -63,10 +67,6 @@ body {
     margin: 0px;
     padding: 0px;
 }
-code {
-    padding: 10px;
-    color: brown;
-}
 header{
     padding: 10px 0px 0px 0px;
 }
@@ -75,6 +75,9 @@ footer{
 }
 a {
     color: inherit;
+}
+p {
+    margin-top: 1em;
 }
 h1 > a {
     text-decoration: none;
