@@ -37,6 +37,7 @@ for md in examples_md:
     md_html = read_file(html)
     md_html = md_html.replace("<pre><code>", "<pre><code>\n")
     md_html = md_html.replace("</code></pre>", "\n</code></pre>")
+    md_html = md_html.replace("</code></pre>", "\n</code></pre>")
     output_path = html.replace("tmp/", "web/")
     rendered_example = template
     rendered_example = rendered_example.replace("{ content }", md_html)
