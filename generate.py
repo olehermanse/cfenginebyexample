@@ -41,6 +41,7 @@ for md in examples_md:
     output_path = html.replace("tmp/", "web/")
     rendered_example = template
     rendered_example = rendered_example.replace("{ content }", md_html)
+    rendered_example = rendered_example.replace('class="content flex"', 'class="content"')
     save_file(output_path, rendered_example)
     examples_html.append(output_path.replace("web/", ""))
 
@@ -49,7 +50,7 @@ names = [n[0].upper() + n[1:] for n in names]
 links = zip(examples_html, names)
 links = ['<li><a href="{}">{}</a></li>'.format(u, n) for u,n in links]
 links =  "\n".join(links)
-links = "<ol>\n" + links + "</ol>\n"
+links = "<ol class=\"examples\">\n" + links + "</ol>\n"
 
 index = index.replace("{ content }", links)
 

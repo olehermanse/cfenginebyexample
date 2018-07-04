@@ -20,8 +20,16 @@ body {
     margin-top: auto;
     margin-bottom: auto;
 }
+.flex {
+    display: flex;
+    align-items: center;
+}
+ol.examples {
+    margin-left: auto;
+    margin-right: auto;
+}
 ol {
-    margin-left: 1em;
+    padding-left: 1.1em;
     font-size: 1.2em;
 }
 li {
