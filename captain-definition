@@ -1,0 +1,13 @@
+{
+ "schemaVersion" :1 ,
+ "dockerfileLines" :[
+                       "FROM  webdevops/nginx:ubuntu-16.04",
+                       "ENV WEB_DOCUMENT_INDEX index.html",
+                       "ADD ./src /cfenginebyexample",
+                       "WORKDIR /cfenginebyexample",
+                       "RUN apt-get update -y",
+                       "RUN apt-get install -y python3 pandoc",
+                       "RUN python3 generate.py",
+                       "RUN cp -r ./web /app"
+                   ]
+}
