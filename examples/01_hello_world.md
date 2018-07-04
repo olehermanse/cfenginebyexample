@@ -1,6 +1,6 @@
 ## Hello, world!
 
-#### Installation
+### Installation
 
 The easiest way to install CFEngine is with a package from
 https://cfengine.com/product/community/
@@ -14,7 +14,7 @@ Typically you use the IP of `eth0` interface (or similar) of your machine.
 If you have multiple hosts bootstrapped to the same address, they will all pull new policy from that remote machine, the policy server.
 [See documentation for more details.](https://docs.cfengine.com/docs/3.12/guide-installation-and-configuration-general-installation.html)
 
-#### Policy
+### Policy
 
 ```
 bundle agent main
@@ -52,4 +52,6 @@ We say that the promise about this file is kept.
 
 The first line includes the CFEngine standard library.
 This requires that you have the standard libraries installed in the correct location.
-If you installed and bootstrapped like explained in @####Installation
+If you installed and bootstrapped like explained in
+
+WIP
