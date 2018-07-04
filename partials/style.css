@@ -9,6 +9,7 @@ body {
 .main {
     padding: 2em;
     margin-top: 2em;
+    margin-bottom: 2em;
     margin-left: auto;
     margin-right: auto;
     vertical-align: middle;
@@ -46,7 +47,7 @@ code {
     font-style: monospace;
     background-color: #F4F4F4;
     margin: 0;
-    padding: 2px !important;
+    padding: 2px;
     color: brown;
 }
 header, footer {
