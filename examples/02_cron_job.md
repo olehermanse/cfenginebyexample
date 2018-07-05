@@ -1,10 +1,10 @@
-# Cron job - Running a script periodically
+## Cron job - Running a script periodically
 
 CFEngine includes a scheduler, `cf-execd`, similar to [cron](https://en.wikipedia.org/wiki/Cron).
 
 If you've [installed and bootstrapped](/01_hello_world.html), `cf-execd` should run your policy (from `/var/cfengine/masterfiles`) every 5 minutes.
 
-## Running a script / shell command
+### Running a script / shell command
 
 ```
 bundle agent batch_update
@@ -20,7 +20,7 @@ This policy doesn't have a main bundle, but we can specify what bundle to run:
 $ cf-agent -K -f batch_update.cf -b batch_update
 ```
 
-## Running periodically using def.json
+### Running periodically using def.json
 
 Place the policy at `/var/cfengine/masterfiles/services/batch_update.cf`.
 Add the file and bundle to `/var/cfengine/masterfiles/def.json`:
@@ -31,7 +31,7 @@ TODO
 }
 ```
 
-## Running periodically using autorun
+### Running periodically using autorun
 
 Change the policy to include an autorun tag:
 
