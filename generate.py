@@ -55,4 +55,4 @@ links = "<ol class=\"examples\">\n" + links + "</ol>\n"
 index = index.replace("{ content }", links)
 
 save_file("web/index.html", index)
-print(index)
+print("Static HTML files for cfenginebyexample.com generated successfully")

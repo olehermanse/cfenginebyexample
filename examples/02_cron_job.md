@@ -1,48 +1,40 @@
-## Cron job - Running a script periodically
+## Running a script periodically, like cron
 
 CFEngine includes a scheduler, `cf-execd`, similar to [cron](https://en.wikipedia.org/wiki/Cron).
+If you've [installed and bootstrapped](/01_hello_world.html), `cf-execd` should run the agent every 5 minutes.
 
-If you've [installed and bootstrapped](/01_hello_world.html), `cf-execd` should run your policy (from `/var/cfengine/masterfiles`) every 5 minutes.
+The agent (`cf-agent`), is responsible for making changes to the system, it evaluates policy from `/var/cfengine/inputs/`.
+The 2 most important policy files are `update.cf` and `promises.cf`.
+`update.cf` pulls updated policy from the policy server.
+`promises.cf` is the entry point of the policy set.
 
 ### Running a script / shell command
 
 ```
-bundle agent batch_update
+body contain in_shell
 {
+    useshell => "useshell";
+    exec_owner => "olehermanse"; # My user
+}
+
+bundle agent dotfiles
+{
+  meta:
+    "tags" slist => { "autorun" };
   commands:
-    "/root/batch_update.py";
+    "curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/install.sh | bash"
+        contain => in_shell;
 }
 ```
 
 This policy doesn't have a main bundle, but we can specify what bundle to run:
 
 ```
-$ cf-agent -K -f batch_update.cf -b batch_update
+$ cf-agent -K -f dotfiles.cf -b dotfiles
 ```
 
-### Running periodically using def.json
+It has a autorun tag, it will run as part of `promises.cf` if you place it in:
 
-Place the policy at `/var/cfengine/masterfiles/services/batch_update.cf`.
-Add the file and bundle to `/var/cfengine/masterfiles/def.json`:
+`/var/cfengine/masterfiles/services/autorun/dotfiles.cf`
 
-```
-{
-TODO
-}
-```
-
-### Running periodically using autorun
-
-Change the policy to include an autorun tag:
-
-```
-bundle agent batch_update
-{
-  meta:
-    "tags" slist => { "autorun" };
-  commands:
-    "/root/batch_update.py";
-}
-```
-
-Place the policy in `/var/cfengine/masterfiles/services/autorun/hello.cf`.
+(By default, the command will run once every 5 minutes).
