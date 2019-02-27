@@ -22,40 +22,42 @@ For your first bootstrap, use the IP of your current machine.
 
 ```
 bundle agent main
+# A bundle of promises, for the agent to evaluate, called main
+# main bundle is run by default (It is in the bundlesequence)
 {
   reports:
-    "Hello, world!";
+    "Hello, world!"; # A promise to report a message to output
 }
 ```
 
-This policy prints the all too familiar message in your terminal.
-Run it with `cf-agent -K -f ./hello.cf`.
-(`./` is important, otherwise, CFEngine will look in `/var/cfengine/inputs/`).
+You can run the policy from the command line:
+```
+$ cf-agent hello.cf --no-lock
+```
 
-By default, a `bundle` called `main` is executed.
-(`agent` means that this `bundle` is intended for the `cf-agent` binary).
-A `bundle` is a collection of promises, this `bundle` has 1 promise; a `reports` type promise which prints a message to the terminal.
+This policy prints the all too familiar message in your terminal.
+(`--no-lock` ensures that the promise isn't skipped if you run it twice).
 
 ### Writing to file instead
 
 ```
 body file control
+# Import the standard library
+# For body edit_line insert_lines
 { inputs => { "$(sys.libdir)/stdlib.cf" }; }
 
 bundle agent main
 {
   files:
     "/root/hello.txt"
-      edit_line => insert_lines("Hello, world!"),
-      create => "true";
+      create => "true",                           # Create file if necessary
+      edit_line => insert_lines("Hello, world!"); # Insert line if necessary
 }
 ```
 
-This policy is more interesting.
-The first 2 lines include the CFEngine standard library (`stdlib`).
-`stdlib` includes many standard bundles and bodies, so you don't have to write them.
+If you run the policy multiple times, CFEngine will recognize that:
 
-We use a `files` type promise to create a file at `/root/hello.txt`.
-The `insert_lines` bundle allows us to append a line (string) if it doesn't already exist.
-If you run the policy multiple times, CFEngine will recognize that A) the file already exists, and B) the file already has the desired content.
+ 1. The file already exists
+ 2. The file already has the desired content.
+
 We say that the promise about this file is kept.
