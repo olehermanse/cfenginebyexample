@@ -20,7 +20,7 @@ def ls(path):
     return os.listdir(path)
 
 def render_markdown(md, html):
-    os.system("cat examples/{} | pandoc -f markdown_github -t html > {}".format(md, html))
+    os.system("cat examples/{} | pandoc -f gfm -t html > {}".format(md, html))
 
 css = read_file("partials/style.css")
 template = read_file("partials/template.html")
@@ -36,7 +36,6 @@ for md in examples_md:
     render_markdown(md, html)
     md_html = read_file(html)
     md_html = md_html.replace("<pre><code>", "<pre><code>\n")
-    md_html = md_html.replace("</code></pre>", "\n</code></pre>")
     md_html = md_html.replace("</code></pre>", "\n</code></pre>")
     output_path = html.replace("tmp/", "web/")
     rendered_example = template
