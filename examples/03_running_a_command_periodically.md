@@ -22,8 +22,8 @@ bundle agent dotfiles
   meta:
     "tags" slist => { "autorun" };
   commands:
-    "curl -L -s https://raw.githubusercontent.com/olehermanse/dotfiles/master/install.sh | bash"
-        contain => in_shell;
+    "curl -L -s https://oleherman.com/dotfiles.sh"
+      contain => in_shell;
 }
 ```
 
