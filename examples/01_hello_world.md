@@ -1,6 +1,6 @@
-## Hello, world!
+# Hello, world!
 
-### Installation
+## Installation
 
 CFEngine packages can be downloaded from:
 https://cfengine.com/product/community/
@@ -18,7 +18,7 @@ $ cf-agent --bootstrap 192.168.100.10
 For your first bootstrap, use the IP of your current machine.
 [See documentation for more details.](https://docs.cfengine.com/docs/3.12/guide-installation-and-configuration-general-installation.html)
 
-### Printing in CFEngine
+## Printing in CFEngine
 
 ```
 bundle agent main
@@ -38,7 +38,7 @@ $ cf-agent hello.cf --no-lock
 This policy prints the all too familiar message in your terminal.
 (`--no-lock` ensures that the promise isn't skipped if you run it twice).
 
-### Writing to file instead
+## Writing to file instead
 
 ```
 body file control

@@ -1,4 +1,4 @@
-## Creating a user with home directory, permissions, and SSH
+# Creating a user with home directory, permissions, and SSH
 
 This example creates a user (if it doesn't exist).
 Home folder is also created and permissions are set.

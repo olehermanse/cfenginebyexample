@@ -5,6 +5,7 @@
 body {
     font-family: Helvetica, sans-serif;
     background-color: #F4F4F4;
+    color: #444444;
 }
 .main {
     padding: 2em;
@@ -15,6 +16,13 @@ body {
     vertical-align: middle;
     max-width: 760px;
     background-color: #FFFFFF;
+    line-height: 1.3em;
+}
+@media screen and (max-width: 900px) {
+    .main {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 .content {
     min-height: 200px;
@@ -27,7 +35,6 @@ body {
 }
 ol {
     padding-left: 1.1em;
-    font-size: 1.2em;
 }
 li {
     margin-top: 0.5em;
@@ -57,22 +64,20 @@ code {
     padding: 2px;
     color: brown;
 }
-header, footer {
-    display: flex;
+h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-top: 1.5em;
+    line-height: normal;
 }
-footer {
-    margin-top: 2em;
+h1{
+    font-size: 1.5em;
 }
-header > * , footer > * {
-    margin-left: auto;
-    margin-right: auto;
-}
-h1, h2 {
-    font-size: 2em;
-    margin-bottom: 1em;
+h2 {
+    font-size: 1.2em;
 }
 h3 {
-    margin-top: 2em;
+    font-size: 1.0em;
 }
 body {
     margin: 0px;
@@ -81,8 +86,24 @@ body {
 header{
     padding: 10px 0px 0px 0px;
 }
+header > h1 {
+    font-size: 2.0em;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: bold;
+}
+header, footer {
+    display: flex;
+}
+header > * , footer > * {
+    margin-left: auto;
+    margin-right: auto;
+}
 footer{
     padding: 0px 0px 10px 0px;
+    margin-top: 2em;
 }
 a {
     color: inherit;

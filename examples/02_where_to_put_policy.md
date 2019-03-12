@@ -1,4 +1,4 @@
-## Where to put policy you write
+# Where to put policy you write
 
 CFEngine includes a scheduler, `cf-execd`, similar to [cron](https://en.wikipedia.org/wiki/Cron).
 If you've [installed and bootstrapped](/01_hello_world.html), `cf-execd` should run the agent every 5 minutes.
@@ -10,7 +10,7 @@ The 2 most important policy files are `update.cf` and `promises.cf`:
     * On the policy server, behavior is the same - policy is copied from `/var/cfengine/masterfiles` to `/var/cfengine/inputs`.
 * `promises.cf` is the entry point of the policy set.
 
-### Autorun - Making your policy run automatically every 5 minutes
+## Autorun - Making your policy run automatically every 5 minutes
 
 There are many ways to run your policy, but the easiest is using `autorun`.
 You can enable this feature via augments, add a JSON at `/var/cfengine/masterfiles/def.json`:

@@ -1,4 +1,4 @@
-## WIP Updating and running a project from GitHub
+# WIP Updating and running a project from GitHub
 
 WIP - this is not done yet.
 
