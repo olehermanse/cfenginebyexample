@@ -1,15 +1,14 @@
 {
  "schemaVersion" :1 ,
  "dockerfileLines" :[
-                       "FROM  webdevops/nginx:ubuntu-16.04",
-                       "ENV WEB_DOCUMENT_INDEX index.html",
+                       "FROM python:3-alpine AS build",
                        "ADD ./src /cfenginebyexample",
                        "WORKDIR /cfenginebyexample",
-                       "RUN apt-get update -y",
-                       "RUN apt-get install -y python3 curl",
-                       "RUN curl --silent -L https://github.com/jgm/pandoc/releases/download/2.2.1/pandoc-2.2.1-1-amd64.deb -o pandoc.deb",
-                       "RUN dpkg -i pandoc.deb",
+                       "ADD https://github.com/jgm/pandoc/releases/download/2.7.2/pandoc-2.7.2-linux.tar.gz pandoc.tar.gz",
+                       "RUN tar -zxvf pandoc.tar.gz",
+                       "ENV PATH \"$PATH:/cfenginebyexample/pandoc-2.7.2/bin/\"",
                        "RUN python3 generate.py",
-                       "RUN cp -r ./web /app"
+                       "FROM nginx:stable-alpine",
+                       "COPY --from=build /cfenginebyexample/web /usr/share/nginx/html"
                    ]
 }
